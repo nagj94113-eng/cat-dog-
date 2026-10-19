@@ -1,0 +1,14 @@
+import urllib.request
+import json
+
+MODEL_URL = "https://teachablemachine.withgoogle.com/models/7A-h7KQTk/"
+
+def check_model():
+    labels_url = MODEL_URL + "metadata.json"
+    req = urllib.request.urlopen(labels_url)
+    metadata = json.loads(req.read().decode('utf-8'))
+    print("تم الاتصال بالنموذج بنجاح!")
+    print("الفئات المكتشفة هي:", metadata['labels'])
+
+if __name__ == "__main__":
+    check_model()
